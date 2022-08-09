@@ -207,12 +207,12 @@ static bool ImGui_ImplWin32_UpdateMouseCursor()
     return true;
 }
 
-static bool IsVkDown(int vk)
+bool IsVkDown(int vk)
 {
     return (::GetKeyState(vk) & 0x8000) != 0;
 }
 
-static void ImGui_ImplWin32_AddKeyEvent(ImGuiKey key, bool down, int native_keycode, int native_scancode = -1)
+void ImGui_ImplWin32_AddKeyEvent(ImGuiKey key, bool down, int native_keycode, int native_scancode = -1)
 {
     ImGuiIO& io = ImGui::GetIO();
     io.AddKeyEvent(key, down);
@@ -235,7 +235,7 @@ static void ImGui_ImplWin32_ProcessKeyEventsWorkarounds()
         ImGui_ImplWin32_AddKeyEvent(ImGuiKey_RightSuper, false, VK_RWIN);
 }
 
-static void ImGui_ImplWin32_UpdateKeyModifiers()
+void ImGui_ImplWin32_UpdateKeyModifiers()
 {
     ImGuiIO& io = ImGui::GetIO();
     io.AddKeyEvent(ImGuiKey_ModCtrl, IsVkDown(VK_CONTROL));
@@ -367,7 +367,7 @@ void    ImGui_ImplWin32_NewFrame()
 #define IM_VK_KEYPAD_ENTER      (VK_RETURN + 256)
 
 // Map VK_xxx to ImGuiKey_xxx.
-static ImGuiKey ImGui_ImplWin32_VirtualKeyToImGuiKey(WPARAM wParam)
+ImGuiKey ImGui_ImplWin32_VirtualKeyToImGuiKey(WPARAM wParam)
 {
     switch (wParam)
     {

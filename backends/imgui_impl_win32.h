@@ -26,6 +26,10 @@ IMGUI_IMPL_API void     ImGui_ImplWin32_NewFrame();
 
 #if 0
 extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
+extern void ImGui_ImplWin32_UpdateKeyModifiers();
+extern void ImGui_ImplWin32_AddKeyEvent(ImGuiKey key, bool down, int native_keycode, int native_scancode = -1);
+extern bool IsVkDown(int vk);
+extern ImGuiKey ImGui_ImplWin32_VirtualKeyToImGuiKey(WPARAM wParam);
 #endif
 
 // DPI-related helpers (optional)
